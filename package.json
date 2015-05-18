@@ -1,0 +1,37 @@
+{
+  "name": "xdg-brightness",
+  "version": "1.0.0",
+  "description": "Change screen brightness on Linux systems",
+  "license": "MIT",
+  "repository": "kevva/xdg-brightness",
+  "author": {
+    "name": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "https://github.com/kevva"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bin": {
+    "xdg-brightness": "cli.js"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "app",
+    "brightness",
+    "cli",
+    "linux",
+    "screen"
+  ],
+  "dependencies": {
+    "meow": "^3.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.0.4"
+  }
+}
