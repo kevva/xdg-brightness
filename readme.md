@@ -28,17 +28,7 @@ xdgBrightness.set(0.8, function (err) {
 
 ## CLI
 
-```
-$ npm install --global xdg-brightness
-```
-
-```
-$ xdg-brightness --help
-
-  Example
-    $ xdg-brightness
-    $ xdg-brightness 0.8
-```
+See the [brightness](https://github.com/kevva/brightness) CLI.
 
 
 ## License
