@@ -17,7 +17,7 @@ var xdgBrightness = require('xdg-brightness');
 
 xdgBrightness.get(function (err, brightness) {
 	console.log(brightness);
-	// '0.5'
+	// 0.5
 });
 
 xdgBrightness.set(0.8, function (err) {

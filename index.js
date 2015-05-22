@@ -21,13 +21,20 @@ module.exports.get = function (cb) {
 			return;
 		}
 
-		fs.readFile(path.join(dir, dirs[0], 'brightness'), 'utf8', function (err, data) {
+		fs.readFile(path.join(dir, dirs[0], 'max_brightness'), 'utf8', function (err, max) {
 			if (err) {
 				cb(err);
 				return;
 			}
 
-			cb(null, data);
+			fs.readFile(path.join(dir, dirs[0], 'brightness'), 'utf8', function (err, data) {
+				if (err) {
+					cb(err);
+					return;
+				}
+
+				cb(null, parseInt(data) / parseInt(max));
+			});
 		});
 	});
 };
