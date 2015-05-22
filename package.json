@@ -1,6 +1,6 @@
 {
   "name": "xdg-brightness",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Change screen brightness on Linux systems",
   "license": "MIT",
   "repository": "kevva/xdg-brightness",
