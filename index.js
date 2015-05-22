@@ -39,8 +39,8 @@ module.exports.set = function (val, cb) {
 		throw new Error('Only Linux systems are supported');
 	}
 
-	if (typeof val !== 'number' && typeof val !== 'string') {
-		throw new Error('Expected a value');
+	if (typeof val !== 'number' || val < 0 || val > 1) {
+		throw new Error('Expected a number between 0 and 1');
 	}
 
 	fs.readdir(dir, function (err, dirs) {
@@ -61,7 +61,7 @@ module.exports.set = function (val, cb) {
 			}
 
 			var max = parseInt(data);
-			var brightness = Math.floor(val / 100 * max).toString();
+			var brightness = Math.floor(val * max).toString();
 
 			fs.writeFile(path.join(dir, dirs[0], 'brightness'), brightness, function (err) {
 				if (err) {
