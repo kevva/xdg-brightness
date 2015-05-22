@@ -3,7 +3,36 @@
 var fs = require('fs');
 var path = require('path');
 
-module.exports = function (val, cb) {
+module.exports.get = function (cb) {
+	var dir = '/sys/class/backlight';
+
+	if (process.platform !== 'linux') {
+		throw new Error('Only Linux systems are supported');
+	}
+
+	fs.readdir(dir, function (err, dirs) {
+		if (err) {
+			cb(err);
+			return;
+		}
+
+		if (!dirs.length) {
+			cb(new Error('No backlight device found'));
+			return;
+		}
+
+		fs.readFile(path.join(dir, dirs[0], 'brightness'), 'utf8', function (err, data) {
+			if (err) {
+				cb(err);
+				return;
+			}
+
+			cb(null, data);
+		});
+	});
+};
+
+module.exports.set = function (val, cb) {
 	var dir = '/sys/class/backlight';
 
 	if (process.platform !== 'linux') {

@@ -15,7 +15,12 @@ $ npm install --save xdg-brightness
 ```js
 var xdgBrightness = require('xdg-brightness');
 
-xdgBrightness(80, function (err) {
+xdgBrightness.get(function (err, brightness) {
+	console.log(brightness);
+	// 0.5
+});
+
+xdgBrightness.set(80, function (err) {
 	console.log('Changed brightness to 80%');
 });
 ```
@@ -31,6 +36,7 @@ $ npm install --global xdg-brightness
 $ xdg-brightness --help
 
   Example
+    $ xdg-brightness
     $ xdg-brightness 80
 ```
 

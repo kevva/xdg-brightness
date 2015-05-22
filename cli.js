@@ -7,16 +7,25 @@ var xdgBrightness = require('./');
 var cli = meow({
 	help: [
 		'Example',
+		'  $ xdg-brightness',
 		'  $ xdg-brightness 80'
 	].join('\n')
 });
 
 if (!cli.input.length) {
-	console.error('Brightness required');
-	process.exit(1);
+	xdgBrightness.get(function (err, data) {
+		if (err) {
+			console.error(err.message);
+			process.exit(1);
+		}
+
+		console.log(data);
+	});
+
+	return;
 }
 
-xdgBrightness(cli.input[0], function (err) {
+xdgBrightness.set(cli.input[0], function (err) {
 	if (err) {
 		console.error(err.message);
 		process.exit(1);
