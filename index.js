@@ -70,6 +70,10 @@ module.exports.set = function (val, cb) {
 			var brightness = Math.floor(val * max).toString();
 
 			fs.writeFile(path.join(dir, dirs[0], 'brightness'), brightness, function (err) {
+				if (err && err.code === 'EACCES') {
+					err.message = 'You don\'t seem to have permission to change the brightness. Try running this command with sudo.';
+				}
+
 				if (err) {
 					cb(err);
 					return;
